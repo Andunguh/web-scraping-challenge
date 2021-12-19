@@ -10,6 +10,7 @@ from pprint import pprint
 
 # scrape finctions
 def scrape_all():
+    
 
     # Set up Splinter
     executable_path = {'executable_path': ChromeDriverManager().install()}
