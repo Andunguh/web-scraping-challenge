@@ -43,7 +43,7 @@ def scrape():
     # test to call scrape mars script
     mars_data = scrape_mars.scrape_all()
 
-    # take the dict and load into mongoDB
+    # take the dictionary and load into mongoDB
 
     marsTable.insert_one(mars_data)
     pprint(mars_data)
