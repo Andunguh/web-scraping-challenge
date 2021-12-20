@@ -2,6 +2,7 @@
 from flask import Flask, render_template, redirect, url_for
 from flask_pymongo import PyMongo
 import scrape_mars
+from pprint import pprint
 
 
 app = Flask(__name__)
@@ -30,23 +31,22 @@ def index():
 @app.route("/scrape")
 
 def scrape():
-    mars = mongo.db.marsData
-    mars_data = scrape_mars.scrape_all()
-    mars.update({}, mars_data, upsert=True)
-
+    
+    
     # refrence to the database collection (table)
-   # marsTable = mongo.db.marsData
+    marsTable = mongo.db.marsData
 
-    # drop the table if it exists
+     #drop the table if it exists
 
-   # mongo.db.marsData.drop()
+    mongo.db.marsData.drop()
 
     # test to call scrape mars script
-   # mars_data = scrape_mars.scrape_all()
+    mars_data = scrape_mars.scrape_all()
 
     # take the dict and load into mongoDB
 
-    #marsTable.insert_one(mars_data)
+    marsTable.insert_one(mars_data)
+    pprint(mars_data)
 
     # go back to the index route
 
